@@ -1,0 +1,1 @@
+export const urlDataBase='http://localhost:8001/';

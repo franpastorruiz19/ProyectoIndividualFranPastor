@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-10" style="margin-top: 50px;">
+            <div class="row justify-content-center">
+                <!-- Recorrer el array formActivities en pares -->
+                <div *ngFor="let actividad of formActivities; let i = index" class="col-md-5" style="margin: 35px;">
+                    <!-- Verificar si el índice actual es par -->
+                    <div class="card">
+                        <div class="card-body">
+                            <section>
+                                <h4 class="card-title text-center">{{actividad.nombre}}</h4>
+                            </section>
+                            <section>
+                                <p class="card-text">{{actividad.descripcion}}</p>
+                                <p class="card-text">{{fechaFormateada[i]}}</p>
+                                <p class="card-text">{{actividad.participantes}} participantes</p>
+                                <p class="card-text">{{actividad.precio}} €</p>
+                            </section>
+                            <section>
+                                <img class="card-img mt-4" src="{{retornarImagen(actividad.tipoActividad)}}"
+                                    height="300px">
+                            </section>
+                            <button class="btn btn-primary stretched-link btn-lg btn-block" style="background-color: yellowgreen; width: 25%;margin-top: 20px; margin-left: 37.5%;border-color: yellowgreen;" (click)="navigateToInfoProduct(actividad)">
+                                Ver detalles
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-sm" style="background-color:  yellowgreen; height: 90px;">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#opciones">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+        </svg>
+    </button>
+
+    <!-- enlaces -->
+    <div class="collapse navbar-collapse" id="opciones">
+        <ul class="navbar-nav" [ngSwitch]="userSession.getLogueado()">
+          <li class="nav-item">
+            <div class="nav-link">
+              <a [routerLink]="['home']" style="color: white;">HOME</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link">
+              <a [routerLink]="['products']" style="color: white;" *ngIf="userSession.getLogueado()===1 && userSession.getUser().tipo==='Cliente'">PRODUCTS</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link">
+              <a [routerLink]="['aboutUs']" style="color: white;">ABOUT US</a>
+            </div>
+          </li>
+          <li class="nav-item" *ngIf="userSession.getLogueado()===1 && userSession.getUser().tipo==='Empresa'">
+            <div class="nav-link">
+              <a [routerLink]="['activities']" style="color: white;">ACTIVITIES</a>
+            </div>
+          </li>
+          <li class="nav-item" *ngIf="userSession.getLogueado()===1 && userSession.getUser().tipo==='Cliente'">
+            <div class="nav-link">
+              <a [routerLink]="['deposit']" style="color: white;">DEPOSIT</a>
+            </div>
+          </li>
+          <li class="nav-item" *ngSwitchCase="0">
+            <div class="nav-link">
+              <a [routerLink]="['login']" style="color: white; margin-left: 1900px;">LOG IN</a>
+            </div>
+          </li>
+          <li class="nav-item" *ngSwitchCase="0">
+            <div class="nav-link">
+              <a [routerLink]="['register']" style="color: white;">REGISTER</a>
+            </div>
+          </li>
+          <li class="nav-item" *ngSwitchCase="1">
+            <div class="nav-link">
+              <a style="color: white; margin-left: 1750px;">{{userSession.getUser().nombre.toUpperCase()}}</a>
+            </div>
+          </li>
+          <li class="nav-item" *ngSwitchCase="1">
+            <div class="nav-link">
+              <a style="color: white; " [routerLink]="['home']"  (click)="desloguear()">LOG OUT</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+</nav>

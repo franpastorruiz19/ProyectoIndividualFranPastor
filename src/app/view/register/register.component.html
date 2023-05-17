@@ -1,0 +1,81 @@
+<div class="container-fluid">
+    <div class="row justify-content-center align-items-center">
+        <div class="card col-sm-6 col-md-4 col-lg-4 py-4 px-4 mt-5 mb-5" style="height: 850px;">
+            <div class="row justify-content-center text-center">
+                <img src="../../../assets/img/logo.png" alt="logo">
+            </div>
+            <div>
+                <form class="row d-flex justify-content-center ">
+
+                    <div class="col-6">
+                        <div class="my-2">
+                            <label style="color: red;">{{labelInfo}}</label>
+                        </div>
+
+                        <div class="mb-5 mt-5">
+                            <input [(ngModel)]="formUser.nombre" type="text" id="user" class="form-control"
+                                placeholder="Nombre" name="Nombre" />
+                        </div>
+
+                        <div class="mb-5 mt-5">
+                            <input [(ngModel)]="formUser.email" type="text" id="email" class="form-control"
+                                placeholder="Email" name="email" />
+                        </div>
+
+                        <div class="mb-5 mt-5">
+                            <input [(ngModel)]="formUser.contrasena" type="password" id="password" class="form-control"
+                                placeholder="Contraseña" name="password" />
+                        </div>
+
+                        <div class="mb-5 mt-5">
+                            <input [(ngModel)]="passwordConfirm" type="password" id="passwordConfirm"
+                                class="form-control" placeholder="Confirma contraseña" name="password" />
+                        </div>
+
+                        <div class="mb-5 mt-5">
+                            <label for="tipoUser">¿Quien eres?:</label><br>
+                            <select name="tipoUser" [(ngModel)]="formUser.tipo">
+                                <option value="Cliente">Cliente</option>
+                                <option value="Empresa">Empresa</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-5 mt-5" [ngSwitch]="formUser.tipo">
+                            <div class="mb-5 mt-5" *ngSwitchCase="'Cliente'">
+                                <label for="tipoCliente">¿Qué tipo de actividades son tus preferidas?:</label>
+                                <select [(ngModel)]="formUser.cliente.tipoActividad" name="tipoCliente">
+                                    <option>Suaves</option>
+                                    <option>Medianas</option>
+                                    <option>Atrevidas</option>
+                                </select>
+
+                            </div>
+                            <div class="mb-5 mt-5" *ngSwitchCase="'Empresa'">
+                                <label for="tipoEmpresa">¿Qué tipo de actividades ofrece tu empresa?:</label>
+                                <select [(ngModel)]="formUser.empresa.tipoEmpresa" name="tipoEmpresa">
+                                    <option value="paracaidismo">Paracaidismo
+                                    </option>
+                                    <option value="snorkel">Snorkel</option>
+                                    <option value="rio">Actividades de Rio</option>
+                                    <option value="excursiones">Excursiones</option>
+                                    <option value="multiaventura">Multiaventura
+                                    </option>
+                                    <option value="parquesTematicos">Parques
+                                        Temáticos</option>
+                                    <option value="deportes">Deportes</option>
+                                    <option value="conciertos">Conciertos</option>
+                                    <option value="alquiler">Alquiler de locales
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="text-center pt-1 ">
+                            <button class="btn btn-main mb-5 mt-2" type="button"
+                                (click)="onSubmit()">Registrarse</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

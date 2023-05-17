@@ -1,0 +1,28 @@
+<div class="card" *ngIf="actividad">
+    <div class="card-body">
+      <h4 class="card-title text-center">{{ actividad.nombre }}</h4>
+      <div class="row">
+        <div class="col-md-8">
+          <section>
+            <p>{{ actividad.descripcion }}</p>
+            <p>Fecha: {{ actividad.fechaActividad | date:'dd/MM/yyyy' }}</p>
+            <p>Participantes: {{ actividad.participantes }}</p>
+            <p>Precio: {{ actividad.precio }} €</p>
+            <!-- Otros detalles de la actividad -->
+  
+             <!-- Botones para volver y registrarse -->
+          <button (click)="volver()" class="mr-3 mb-3">Volver</button>
+          <button (click)="registrarse()" >Registrarse</button>
+          <div class="mb-5 mt-5" [ngSwitch]="label">
+          <label *ngSwitchCase="0"></label>
+          <label *ngSwitchCase="1" style="color: red;">{{labelError}}</label>
+          <label *ngSwitchCase="2">{{labelInfo}}</label>
+          </div>
+        </section>
+        </div>
+        <div class="col-md-4">
+          <img class="img-fluid float-start me-3" [src]="retornarImagen(actividad.tipoActividad)" alt="Imagen de la actividad">
+        </div>
+      </div>
+    </div>
+  </div>
